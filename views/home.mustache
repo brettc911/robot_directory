@@ -11,9 +11,9 @@
     <section class="robots">
       {{#users}}
       <div class="robot_container">
-        <a href="/users"><img class="picture" src={{avatar}} alt="{{id}}-1"=></a>
+        <a href="/{{name}}"><img class="picture" src={{avatar}} alt="{{id}}-1"=></a>
         <h2>{{name}}</h2>
-        <p>{{job}}</p>
+        <h3 {{red}}>{{job}}</h3>
       </div>
       {{/users}}
 
