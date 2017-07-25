@@ -1,0 +1,23 @@
+
+
+.wrapper{
+  margin: 0 auto;
+}
+
+header{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.robots{
+  display: flex;
+  justify-content: space-between;
+  flex-flow: wrap row;
+}
+
+.robot_container{
+  border: solid black 1px;
+  width: 20%;
+}
