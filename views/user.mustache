@@ -7,12 +7,14 @@
   </head>
   <body>
     <header>
-      <h1>He nees work</h1>
+      <h1>He needs work</h1>
     </header>
     <div class="robot_container">
+      {{#user}}
       <img src={{avatar}} alt="">
       <h2>{{name}}</h2>
       <p>{{job}}</p>
+      {{/user}}
     </div>
   </body>
 </html>

@@ -1,36 +1,30 @@
 const express = require('express');
 const mustacheExpress = require('mustache-Express');
-const data = require('./data');
+const data = require('./models/user');
+const db = require('./db');
 const app = express()
+// Routes
+const userRoutes = require('./Routes/users');
+const homeRoute = require('./Routes/home');
+
 
 
 app.engine('mustache', mustacheExpress())
 app.set('views', './views')
 app.set('view engine', 'mustache')
 
+
 app.use(express.static('public'))
 
-app.get("/", function(req, res) {
-  res.render('home', data)
-})
+let url = 'mongodb://localhost:27017/newdb'
 
-app.get("/:user", function(req, res) {
+// users route
+app.use('/', userRoutes);
+// home route
+app.use('/', homeRoute)
 
-  var robotName = req.params.user
+db.connect(url, (err, connection) => {
+  if (!err) console.log('connected to mongo');
 
-  for (var i = 0; i < data.users.length; i++) {
-
-    if (data.users[i].job === null) {
-      data.users[i].job = "looking for work"
-    }
-
-    if (data.users[i].name === robotName) {
-      res.render('user', data.users[i])
-    }
-  }
-})
-
-
-app.listen(3000, function() {
-  console.log("listening on port 3000...")
-})
+  app.listen(3000, () => console.log('listening on 3000...'));
+});
